@@ -1,0 +1,95 @@
+.HotelCard {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 10px;
+    max-width: 100%;
+    background: linear-gradient(to bottom right, #3289ed, #000000);
+}
+
+.HotelCard:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.HotelCard img {
+    width: 150px;
+    object-fit: cover;
+}
+
+.hotel-main {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    flex: 1;
+}
+
+.hotelName {
+    font-size: 1.5rem;
+    margin: 0;
+    color: #ffffff;
+}
+
+.hotelAddress {
+    font-size: 1rem;
+    margin: 5px 0;
+    color: #ffffff;
+}
+
+.hotelDescription {
+    font-size: 0.9rem;
+    margin: 10px 0;
+    color: #ffffff;
+}
+
+.hotelPrice {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ffffff;
+
+}
+
+.hotelRate {
+    font-size: 1rem;
+    color: #e04b00;
+
+}
+
+.hotel-container a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.hotel-container a:hover {
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .HotelCard {
+        flex-direction: column;
+        margin: 5px;
+    }
+
+    .HotelCard img {
+        width: 100%;
+        height: auto;
+    }
+
+    .hotel-main {
+        padding: 10px;
+    }
+
+    .hotelName {
+        font-size: 1.2rem;
+    }
+
+    .hotelAddress,
+    .hotelDescription,
+    .hotelPrice,
+    .hotelRate {
+        font-size: 0.9rem;
+    }
+}

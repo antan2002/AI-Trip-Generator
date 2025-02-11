@@ -1,0 +1,438 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: 'Times Roman', Times, serif;
+}
+
+.Trip-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    font-family: 'Times Roman', Times, serif;
+}
+
+.head {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.head h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.para {
+    text-align: center;
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+.para p {
+    font-size: 1rem;
+    color: #000000;
+    text-align: justify;
+
+}
+
+.search {
+    width: 100%;
+    max-width: 600px;
+}
+
+.sub-searchheading {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sub-searchheading h2 {
+    font-size: 1.8em;
+    font-style: italic;
+    color: #000000;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.placeName {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.placeName:focus {
+    border-color: #000000;
+    box-shadow: 0 0 5px rgba(15, 15, 15, 0.5);
+}
+
+.placeName::placeholder {
+    font-style: italic;
+}
+
+.search-sec {
+    margin-top: 20px;
+}
+
+.sub-searchheading {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: fadeInUp 0.5s ease;
+    /* Animation effect */
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.sub-searchheading h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.input {
+    padding: 10px;
+    width: 100%;
+    max-width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Responsive design for phones */
+@media (max-width: 600px) {
+    .sub-searchheading {
+        padding: 15px;
+    }
+
+    .sub-searchheading h2 {
+        font-size: 20px;
+    }
+
+    .input {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .head h1 {
+        font-size: 2em;
+    }
+
+    .sub-searchheading h2 {
+        font-size: 1.5em;
+    }
+
+    .para p {
+        font-size: 1em;
+    }
+
+    .Trip-container {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .head h1 {
+        font-size: 1.8em;
+    }
+
+    .sub-searchheading h2 {
+        font-size: 1.2em;
+    }
+
+    .para p {
+        font-size: 0.9em;
+    }
+}
+
+.budget {
+    text-align: center;
+    padding: 20px;
+}
+
+.budget h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: left;
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.icon {
+    font-size: 20px;
+    color: #007bff;
+}
+
+.title {
+    font-size: 24px;
+    margin: 10px 0;
+    color: #333;
+}
+
+.desc {
+    font-size: 16px;
+    color: #000000;
+
+}
+
+
+@media (max-width: 600px) {
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+    }
+}
+
+
+
+.travel {
+    padding: 20px;
+    text-align: center;
+}
+
+.travel h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.card-container2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.card2 {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: 250px;
+    text-align: left;
+    transition: transform 0.2s;
+}
+
+.card2:hover {
+    transform: scale(1.05);
+}
+
+.icon2 {
+    font-size: 20px;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.title2 {
+    font-size: 20px;
+    margin: 5px 0;
+    color: #333;
+}
+
+.desc2 {
+    font-size: 14px;
+    color: #777;
+    transition: color 0.3s;
+}
+
+.card2:hover .desc2 {
+    color: #555;
+}
+
+
+@media (max-width: 600px) {
+    .card-container2 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card2 {
+        width: 90%;
+    }
+}
+
+
+.generateBtn {
+    background: linear-gradient(45deg, #dd0808, #f06595);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: Times Roman, serif;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    margin: 20px;
+
+}
+
+
+.generateBtn:hover {
+    background: linear-gradient(45deg, #000000, #ffffff);
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+
+.generateBtn:focus {
+    outline: none;
+}
+
+
+.btn-container {
+    display: flex;
+    justify-content: flex-end;
+
+    margin: 20px;
+
+}
+
+
+@media (max-width: 768px) {
+    .generateBtn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .generateBtn {
+        width: 100%;
+
+        padding: 12px;
+        font-size: 16px;
+    }
+}
+
+.dialog {
+    text-align: center;
+    padding: 20px;
+}
+
+.dialogTitle {
+    text-align: center;
+    font-size: 24px;
+    font-family: 'Times Roman', serif;
+    margin-bottom: 10px;
+}
+
+.outhLogo {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.message {
+    font-size: 24px;
+    font-family: 'Times Roman', serif;
+    margin-bottom: 10px;
+}
+
+.para2 {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.btnSignIn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(22, 10, 189);
+
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0 auto;
+
+}
+
+.btnSignIn:hover {
+    background-color: #000000;
+
+}
+
+.btnSignIn svg {
+    margin-right: 10px;
+}
+
+@media (max-width: 600px) {
+    .dialog {
+        padding: 10px;
+    }
+
+    .outhLogo {
+        width: 80px;
+        height: 80px;
+    }
+
+    .message {
+        font-size: 20px;
+    }
+
+    .para2 {
+        font-size: 14px;
+    }
+
+    .btnSignIn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

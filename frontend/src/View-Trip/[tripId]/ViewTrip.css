@@ -1,0 +1,24 @@
+.view-trip {
+    padding: 2.5rem;
+}
+
+@media (min-width: 768px) {
+    .view-trip {
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .view-trip {
+        padding-left: 11rem;
+        padding-right: 11rem;
+    }
+}
+
+@media (min-width: 1280px) {
+    .view-trip {
+        padding-left: 14rem;
+        padding-right: 14rem;
+    }
+}

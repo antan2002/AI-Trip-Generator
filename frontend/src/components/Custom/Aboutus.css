@@ -1,0 +1,143 @@
+.about-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-container h1 {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.about-container p {
+    font-size: 1rem;
+    text-align: center;
+    color: gray;
+    text-align: justify;
+}
+
+
+
+.center-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border: none;
+    background-color: #c164d6;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1.2rem;
+
+}
+
+.center-button:hover {
+    background-color: #000000;
+
+}
+
+.center-button svg {
+    margin-left: 8px;
+    fill: currentColor;
+
+}
+
+
+.bttn-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.testimonial-container p {
+    text-align: center;
+}
+
+.testimonial-container blockquote {
+    text-align: justify;
+}
+
+.about-section {
+    margin-bottom: 40px;
+}
+
+.testimonial-section {
+    margin-bottom: 40px;
+}
+
+.testimonial-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.testimonial-card {
+    flex-basis: 30%;
+    margin-bottom: 20px;
+    text-align: center;
+    display: block;
+    border: 20px;
+    background: linear-gradient(to right, rgb(249, 249, 249), lightSkyBlue);
+    border-radius: 12px;
+}
+
+.testimonial-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    margin-top: 15px;
+}
+
+.testimonial-img:hover {
+    transform: scale(1.05);
+}
+
+.testimonial-card blockquote {
+    font-style: italic;
+    margin-top: 10px;
+}
+
+.rating {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.star {
+    color: #FFD700;
+
+    font-size: 20px;
+    margin: 0 2px;
+}
+
+.filled {
+    color: #FFD700;
+
+}
+
+.unfilled {
+    color: #E0E0E0;
+
+}
+
+@media (max-width: 768px) {
+
+    .guide-card,
+    .testimonial-card {
+        flex-basis: 45%;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .guide-card,
+    .testimonial-card {
+        flex-basis: 100%;
+    }
+}

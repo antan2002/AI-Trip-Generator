@@ -1,0 +1,99 @@
+.infosec-container {
+    padding: 1rem;
+}
+
+.infosec-image {
+    height: 340px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+
+.infosec-content {
+    padding: 1rem;
+}
+
+.infosec-header {
+    margin-bottom: 1rem;
+}
+
+.infosec-location {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.infosec-details-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.infosec-details {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.infosec-detail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 20%;
+    padding: 1rem;
+    text-align: center;
+
+}
+
+.infosec-detail p {
+    margin: 0;
+    font-weight: bold;
+    font-size: 0.875rem;
+}
+
+.infosec-detail h2 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.infosec-share-button {
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+
+
+@media (max-width: 768px) {
+    .infosec-details-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .infosec-details {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .infosec-detail {
+        width: auto;
+        height: auto;
+        border-radius: 0;
+    }
+
+    .infosec-location {
+        font-size: 1.5rem;
+    }
+
+    .infosec-share-button {
+        font-size: 1.25rem;
+        width: 100%;
+        margin-top: 1rem;
+    }
+}
