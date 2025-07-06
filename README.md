@@ -124,14 +124,3 @@ Feel free to open issues or submit pull requests if you'd like to improve the pr
 
 This project is open-source and available under the [MIT License](LICENSE).
 
-```
-
----
-
-Let me know if you'd like to include:
-- Screenshots or GIFs of the UI
-- API route documentation
-- Specific AI logic used for trip generation (e.g., ChatGPT, OpenAI API)
-
-I can extend the README for that too.
-```
