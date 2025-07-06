@@ -10,7 +10,7 @@ const TripRouter = require('./Routes/TripRoutes');
 const PORT = process.env.PORT || 8080;
 
 const allowedOrigins = [
-    'https://darling-crepe-6e2303.netlify.app',
+    'https://ai-based-tripgenerator.netlify.app',
     'http://localhost:3000'
 ];
 
