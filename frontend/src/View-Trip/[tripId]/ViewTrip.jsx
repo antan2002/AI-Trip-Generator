@@ -15,7 +15,7 @@ const ViewTrip = () => {
     useEffect(() => {
         const fetchTripData = async () => {
             try {
-                const response = await axios.get(`https://ai-trip-generator.onrender.com/trip/${tripID}`);
+                const response = await axios.get(`http://localhost:8080/trip/${tripID}`);
                 setTripData(response.data);
             } catch (err) {
                 setError('Error fetching trip data');

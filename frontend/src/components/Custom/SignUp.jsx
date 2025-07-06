@@ -25,7 +25,7 @@ const SignUp = ({ onAuthSuccess }) => {
             return handleError('all sections are required')
         }
         try {
-            const url = 'https://ai-trip-generator.onrender.com/trip/signup'
+            const url = 'http://localhost:8080/trip/signup'
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
