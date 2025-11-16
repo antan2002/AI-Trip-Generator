@@ -25,40 +25,46 @@ const Login = ({ onAuthSuccess }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const { email, password } = loginData;
+
         if (!email || !password) {
-            return handleError('all sections are required')
+            return handleError('All fields are required');
         }
+
         setLoading(true);
+
         try {
-            const url = 'https://ai-trip-generator.onrender.com/trip/login'
+            const url = 'https://tripgenerator-3.onrender.com/api/auth/login';
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
-                    'content-type': 'application/json'
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(loginData)
-            })
+            });
+
             const result = await response.json();
-            const { success, message, jwtToken, name, error } = result;
-            if (success) {
-                handleSuccess(message);
-                localStorage.setItem('token', jwtToken);
-                localStorage.setItem('loggedInUser', name);
+            const { token, user, message, error } = result;
+
+            if (token && user) {
+                handleSuccess('Login successful!');
+                localStorage.setItem('token', token);
+                localStorage.setItem('loggedInUser', user.name);
                 setTimeout(() => {
-                    navigate('/')
                     onAuthSuccess();
-                }, 1000)
-                setLoading(false);
+                    navigate('/');
+                }, 1000);
             } else if (error) {
-                const details = error?.details[0].message;
-                handleError(details || 'An error occurred. Please try again.')
-            } else if (!success) {
-                handleError(message);
+                handleError(error.details?.[0]?.message || 'Login error occurred');
+            } else {
+                handleError(message || 'Invalid credentials');
             }
         } catch (err) {
-            handleError(err)
+            handleError(err.message || 'Server error');
+        } finally {
+            setLoading(false);
         }
-    }
+    };
+
 
 
     return (

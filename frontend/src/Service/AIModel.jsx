@@ -1,7 +1,16 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 
+<<<<<<< Updated upstream
 const apiKey = "AIzaSyCYvRvV7UXbD4tKAkgsw9-bKyd9S4m5ER8";
+=======
+const apiKey = import.meta.env.VITE_GOOGLE_GENERATIVE_AI_KEY;
+
+if (!apiKey) {
+    console.error("VITE_GOOGLE_GENERATIVE_AI_KEY environment variable is not set");
+}
+
+>>>>>>> Stashed changes
 const genAI = new GoogleGenerativeAI(apiKey);
 
 const model = genAI.getGenerativeModel({

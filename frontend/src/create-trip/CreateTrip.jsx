@@ -28,9 +28,6 @@ function CreateTrip() {
         });
     };
 
-    useEffect(() => {
-    }, [formData]);
-
     const onGenerate = async () => {
         if (!formData.location || !formData.startDate || !formData.endDate || !formData.budget || !formData.traveler) {
             toast("Please fill in all the details");
@@ -58,6 +55,8 @@ function CreateTrip() {
         try {
             const result = await chatSession.sendMessage(FINAL_PROMPT);
             const responseText = await result?.response?.text();
+
+            const parsedResponse = JSON.parse(responseText);
             toast("Trip generated successfully!");
 
             const tripData = {
@@ -66,13 +65,17 @@ function CreateTrip() {
                 endDate: formData.endDate,
                 budget: formData.budget,
                 traveler: formData.traveler,
-                itinerary: JSON.parse(responseText).itinerary,
-                hotelOptions: JSON.parse(responseText).hotelOptions
+                itinerary: parsedResponse.itinerary,
+                hotelOptions: parsedResponse.hotelOptions
             };
 
-            const saveResponse = await axios.post('https://ai-trip-generator.onrender.com/trip/save', tripData);
+            const saveResponse = await axios.post('https://tripgenerator-3.onrender.com/api/trips/save', tripData, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            });
 
-            const id = saveResponse.data._id;
+            const id = saveResponse?.data?._id;
             if (!id) {
                 console.error('Trip ID not found in response:', saveResponse.data);
                 toast("Failed to retrieve trip ID.");
@@ -83,18 +86,17 @@ function CreateTrip() {
             navigate(`/view-trip/${id}`);
 
         } catch (error) {
-            const responseText = await result?.response?.text();
+            console.error("Error generating or saving trip:", error);
             toast("An error occurred while generating or saving the trip. Please try again.");
         } finally {
             setLoading(false);
         }
     };
 
-
     return (
         <div className='Trip-container'>
             <div className="head">
-                <h1>Get to know Trips 🗺️</h1>
+                <h1>Get to know Trips 🗸️</h1>
             </div>
             <div className="para">
                 <p>Now there’s two ways to plan your trip—use AI or search on your own. Either way, you’ve got more than 8 million spots to discover, with over one billion traveler reviews and opinions to guide you.</p>

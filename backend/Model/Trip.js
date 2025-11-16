@@ -21,6 +21,11 @@ const itinerarySchema = new mongoose.Schema({
 });
 
 const tripSchema = new mongoose.Schema({
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
+        required: true
+    },
     location: String,
     startDate: Date,
     endDate: Date,

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import Header from './components/Custom/Header';
 import Footer from './components/Custom/Footer';
 import Home from './routes/Home';
@@ -14,13 +14,23 @@ import Profile from './routes/Profile';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
+
+  // On mount, check token
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    setIsAuthenticated(!!token);
+  }, []);
 
   const handleAuthSuccess = () => {
     setIsAuthenticated(true);
   };
 
   const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('loggedInUser');
     setIsAuthenticated(false);
+    navigate('/login');
   };
 
   return (
@@ -40,7 +50,7 @@ function App() {
             <Route path="/service" element={<Service />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/view-trip/:tripID" element={<ViewTrip />} />
+            <Route path="/view-trip/:tripId" element={<ViewTrip />} />
             <Route path="*" element={<Navigate to="/" />} />
           </>
         )}

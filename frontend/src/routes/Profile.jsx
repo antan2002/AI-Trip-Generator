@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import TripCard from '../components/Custom/TripCard';
@@ -11,13 +10,24 @@ function Profile() {
     const [loggedInUser, setLoggedInUser] = useState('');
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const tripsPerPage = 6; // Number of trips per page
+    const tripsPerPage = 6;
 
+    // Fetch trips for the logged-in user
     useEffect(() => {
         const fetchTrips = async () => {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                console.warn('No token found. Please login.');
+                return;
+            }
+
             try {
                 setLoading(true);
-                const response = await axios.get('https://ai-trip-generator.onrender.com/trip');
+                const response = await axios.get('https://tripgenerator-3.onrender.com/api/trips', {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
                 setTrips(response.data);
             } catch (error) {
                 console.error('Error fetching trips:', error);
@@ -29,6 +39,7 @@ function Profile() {
         fetchTrips();
     }, []);
 
+    // Set username
     useEffect(() => {
         const user = localStorage.getItem('loggedInUser');
         setLoggedInUser(user || 'Guest');
@@ -45,10 +56,11 @@ function Profile() {
         <>
             <Hero
                 cName="hero-mid"
-                heroImg="https://images.unsplash.com/photo-1707343848552-893e05dba6ac?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                heroImg="https://images.unsplash.com/photo-1707343848552-893e05dba6ac?q=80&w=2070&auto=format&fit=crop"
                 title={`Welcome to Your Profile - ${loggedInUser}`}
                 btnStyle="hide"
             />
+
             <div className="profile-container">
                 <div className="trip-cards-container">
                     {loading ? (

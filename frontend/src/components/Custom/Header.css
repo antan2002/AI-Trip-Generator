@@ -14,6 +14,12 @@
 
 }
 
+.nav-user {
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    margin-right: 10px;
+}
+
 .navbar-logo {
     color: black;
     font-size: 2rem;

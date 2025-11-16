@@ -28,6 +28,11 @@ function Header({ isAuthenticated, handleLogout }) {
                         </Link>
                     </li>
                 ))}
+                {/* {isAuthenticated && (
+                    <li>
+                        <span className="nav-user">Welcome, {localStorage.getItem('loggedInUser')}</span>
+                    </li>
+                )} */}
                 {isAuthenticated ? (
                     <button className="nav-link" onClick={handleLogout}>
                         Logout
