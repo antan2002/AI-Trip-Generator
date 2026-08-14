@@ -2,4 +2,4 @@ const isDev = !import.meta.env.PROD;
 
 export const BACKEND_URL = isDev
     ? 'http://localhost:8080'
-    : 'https://tripgenerator-3.onrender.com';
+    : 'https://ai-trip-generator.onrender.com';
