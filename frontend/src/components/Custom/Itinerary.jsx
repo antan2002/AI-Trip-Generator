@@ -7,9 +7,11 @@ function Itinerary({ trip }) {
         <div className="itinerary-container">
             <h2 className="itinerary-title">Places To Visit</h2>
             <div className="itinerary-list">
-                {trip?.itinerary && Object.keys(trip.itinerary).map((key) => (
-                    <Card key={key} data={trip.itinerary[key]} title={key} />
-                ))}
+                {trip?.itinerary && Object.entries(trip.itinerary)
+                    .filter(([, day]) => day && day.name)
+                    .map(([key, day]) => (
+                        <Card key={key} data={day} title={key} />
+                    ))}
             </div>
         </div>
     );

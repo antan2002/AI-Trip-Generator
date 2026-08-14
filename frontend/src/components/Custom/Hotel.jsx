@@ -6,14 +6,22 @@ function Hotel({ trip }) {
     const exchangeRate = 83;
 
     const convertToRupees = (priceInDollars) => {
-        return (priceInDollars * exchangeRate).toFixed(2);
+        const value = Number(priceInDollars);
+        return Number.isFinite(value) ? (value * exchangeRate).toFixed(2) : null;
     };
 
-    const formatPriceRange = (priceRangeInDollars) => {
-        const [minPrice, maxPrice] = priceRangeInDollars.replace('$', '').split('-').map(Number);
-        const minPriceInRupees = convertToRupees(minPrice);
-        const maxPriceInRupees = convertToRupees(maxPrice);
-        return `₹ ${minPriceInRupees} ` + ` per night`;
+    const formatPriceRange = (priceRange) => {
+        const priceStr = String(priceRange || '').trim();
+        const numbers = (priceStr.match(/\d+(?:\.\d+)?/g) || []).map(Number);
+        if (numbers.length === 0) return priceStr || 'N/A';
+
+        const minInRupees = convertToRupees(Math.min(...numbers));
+        const maxInRupees = convertToRupees(Math.max(...numbers));
+
+        if (numbers.length === 1) {
+            return `₹ ${minInRupees} per night`;
+        }
+        return `₹ ${minInRupees} - ₹ ${maxInRupees} per night`;
     };
 
     return (

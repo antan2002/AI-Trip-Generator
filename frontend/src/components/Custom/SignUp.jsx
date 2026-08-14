@@ -3,6 +3,7 @@ import './SignUp.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { handleError, handleSuccess } from '../../util';
+import { BACKEND_URL } from '../../Service/config';
 const SignUp = ({ onAuthSuccess }) => {
     const [formData, setFormData] = useState({
         name: '',
@@ -25,7 +26,7 @@ const SignUp = ({ onAuthSuccess }) => {
             return handleError('all sections are required')
         }
         try {
-            const url = 'https://tripgenerator-3.onrender.com/api/auth/signup'
+            const url = `${BACKEND_URL}/api/auth/signup`
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -34,17 +35,21 @@ const SignUp = ({ onAuthSuccess }) => {
                 body: JSON.stringify(formData)
             })
             const result = await response.json();
-            const { success, message, error } = result;
+            const { success, message, error, token, user } = result;
             if (success) {
                 handleSuccess(message);
+                if (token) {
+                    localStorage.setItem('token', token);
+                    localStorage.setItem('loggedInUser', user?.name || name);
+                }
                 setTimeout(() => {
-                    navigate('/')
                     onAuthSuccess();
+                    navigate('/')
                 }, 1000)
             } else if (error) {
-                const details = error?.details[0].message;
+                const details = typeof error === 'string' ? error : error?.details?.[0]?.message;
                 handleError(details || 'An error occurred. Please try again.')
-            } else if (!success) {
+            } else {
                 handleError(message);
             }
         } catch (err) {

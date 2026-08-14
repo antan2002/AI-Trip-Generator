@@ -5,6 +5,7 @@ import Infosec from '@/components/Custom/Infosec';
 import Hotel from '@/components/Custom/Hotel';
 import Itinerary from '@/components/Custom/Itinerary';
 import './ViewTrip.css';
+import { BACKEND_URL } from '../../Service/config';
 
 const ViewTrip = () => {
     const { tripId } = useParams();
@@ -27,7 +28,7 @@ const ViewTrip = () => {
                     return;
                 }
 
-                const url = `https://tripgenerator-3.onrender.com/api/trips/${tripId}`;
+                const url = `${BACKEND_URL}/api/trips/${tripId}`;
                 console.log('Request URL:', url);
 
                 const response = await axios.get(url, {

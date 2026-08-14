@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import axios from 'axios';
 import 'react-datepicker/dist/react-datepicker.css';
+import { BACKEND_URL } from '../Service/config';
 
 function CreateTrip() {
     const initialFormData = {
@@ -26,6 +27,16 @@ function CreateTrip() {
             ...formData,
             [name]: value,
         });
+    };
+
+    const parseJsonResponse = (text) => {
+        let cleaned = String(text || '').trim();
+        const fence = cleaned.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
+        if (fence) cleaned = fence[1].trim();
+        const start = cleaned.indexOf('{');
+        const end = cleaned.lastIndexOf('}');
+        if (start !== -1 && end > start) cleaned = cleaned.slice(start, end + 1);
+        return JSON.parse(cleaned);
     };
 
     const onGenerate = async () => {
@@ -56,7 +67,7 @@ function CreateTrip() {
             const result = await chatSession.sendMessage(FINAL_PROMPT);
             const responseText = await result?.response?.text();
 
-            const parsedResponse = JSON.parse(responseText);
+            const parsedResponse = parseJsonResponse(responseText);
             toast("Trip generated successfully!");
 
             const tripData = {
@@ -69,7 +80,7 @@ function CreateTrip() {
                 hotelOptions: parsedResponse.hotelOptions
             };
 
-            const saveResponse = await axios.post('https://tripgenerator-3.onrender.com/api/trips/save', tripData, {
+            const saveResponse = await axios.post(`${BACKEND_URL}/api/trips/save`, tripData, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }

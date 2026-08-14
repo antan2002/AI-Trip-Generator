@@ -4,6 +4,7 @@ import TripCard from '../components/Custom/TripCard';
 import Hero from '@/components/Custom/Hero';
 import './Profile.css';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
+import { BACKEND_URL } from '../Service/config';
 
 function Profile() {
     const [trips, setTrips] = useState([]);
@@ -23,7 +24,7 @@ function Profile() {
 
             try {
                 setLoading(true);
-                const response = await axios.get('https://tripgenerator-3.onrender.com/api/trips', {
+                const response = await axios.get(`${BACKEND_URL}/api/trips`, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }

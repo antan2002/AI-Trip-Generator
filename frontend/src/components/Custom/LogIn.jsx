@@ -5,6 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { handleError, handleSuccess } from '../../util';
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { BACKEND_URL } from '../../Service/config';
 const Login = ({ onAuthSuccess }) => {
 
     const [loginData, setLoginData] = useState({
@@ -33,7 +34,7 @@ const Login = ({ onAuthSuccess }) => {
         setLoading(true);
 
         try {
-            const url = 'https://tripgenerator-3.onrender.com/api/auth/login';
+            const url = `${BACKEND_URL}/api/auth/login`;
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
